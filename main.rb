@@ -35,6 +35,8 @@
       @board.draw_board
     end
 
+
+    private
     #might not need this 
     def place_token()
       column = ask_for_column
@@ -79,8 +81,6 @@
     def winner
       @winner
     end
-
-    
 
   end
 
@@ -179,9 +179,7 @@
     end
 
 
-    def overlapping?
-      #true or false 
-    end
+    
 
     def red_text(text)
       "\e[31m#{text}\e[0m"
@@ -241,6 +239,7 @@
       # end
     end
 
+    private
     def highlight_winning_tokens(last_placed_token)
       board = last_placed_token[3]
       shape =last_placed_token[2]
