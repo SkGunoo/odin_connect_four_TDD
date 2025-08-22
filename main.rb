@@ -110,9 +110,7 @@
     end
 
 
-    def board
-      @board
-    end
+    
 
 
     def place_token_to_column(column,shape)
