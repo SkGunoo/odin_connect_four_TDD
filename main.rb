@@ -11,7 +11,7 @@
     #place a toekn 
 
   class ConnectFour
-    
+    attr_reader :winner
     def initialize
       # welcome_message
       @board = Board.new
@@ -78,9 +78,7 @@
       @board.draw_board
     end
 
-    def winner
-      @winner
-    end
+  
 
   end
 
