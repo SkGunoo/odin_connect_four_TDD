@@ -119,7 +119,7 @@
       number_of_rows = @board_row.size
       number_of_rows.times do |num|
         if @board[num][column].nil?
-          @board[num][column] = shape
+          @board[num][column] = shape == '➀' ? red_text(shape.center(3)) : blue_text(shape.center(3))
           @last_placed_token = [num,column,shape,@board]
           message_after_placement(shape,num,column)
           break
@@ -258,19 +258,7 @@
     #make sure these 3 methods update
     #winner variable and return true if
     #there is a winner
-    def row_check(last_placed_token)
-      row = last_placed_token[0]
-      column = last_placed_token[1]
-      board = last_placed_token[3]
-      
-      if row_left_side_check(row,column,board) || row_right_side_check(row,column,board)
-        true
-      else
-        false
-      end
-
-    end
-
+    
     def check_all_directions(row,column,board,row_delta,column_delta)
       possible_win_locations = (0..3).map {|num| [row + (num * row_delta), column + (num * column_delta)]}
       tokens = get_tokens_from_given_locations(possible_win_locations,board)
@@ -299,21 +287,7 @@
 
     end
 
-    def row_left_side_check(row,column,board)
-      #just get all the elemets 
-      
-      possible_win_locations = [[row,column],[row,(column-1)],[row,(column-2)],[row,(column-3)]]
-      tokens = get_tokens_from_given_locations(possible_win_locations,board)
-      four_of_same_tokens?(tokens)
-        
-    end
-
-    def row_right_side_check(row,column,board)
-      possible_win_locations = [[row,column],[row,(column + 1)],[row,(column + 2)],[row,(column + 3)]]
-      tokens = get_tokens_from_given_locations(possible_win_locations,board)
-      four_of_same_tokens?(tokens)
-      
-    end
+    
 
     def get_tokens_from_given_locations(locations,board)
       tokens = []
@@ -353,11 +327,6 @@
     end
 
 
-    def column_check(last_placed_token)
-    end
-
-    def diagnal_check(last_placed_token)
-    end
     
   end
 
