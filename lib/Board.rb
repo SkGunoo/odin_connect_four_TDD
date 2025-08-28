@@ -21,7 +21,7 @@ class Board
     # is at the left bottom corner
     puts full_board.reverse
   end
-
+  
   def place_token_to_column(column, shape)
     number_of_rows = @board_row.size
     number_of_rows.times do |num|
@@ -43,10 +43,13 @@ class Board
   def not_full?(column_number)
     column = get_column_tokens(column_number)
     # return false if column is full
-    return true unless column.size == @board_row
+    if column.size == @board_row
+      puts 'that column is full!'
+      false
+    else
+      true  
+    end
 
-    puts 'that column is full!'
-    false
   end
 
   def draw_check
