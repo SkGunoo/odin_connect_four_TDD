@@ -54,12 +54,14 @@ class Winchecker
   end
 
   def check_all_directions(row, column, board, row_delta, column_delta)
-    #creates array of locations based on row and column using row_delta and column_delta
-    possible_win_locations = (0..3).map { |num| [row + (num * row_delta), column + (num * column_delta)] }
-    #get the tokens from given locations in array form
-    tokens = get_tokens_from_given_locations(possible_win_locations, board)
-    #return true if tokens consist of 4 of same tokens
-    four_of_same_tokens?(tokens)
+    (-3..0).any? do |offset|
+      #creates array of locations based on row and column using row_delta and column_delta
+      possible_win_locations = (0..3).map { |num| [row + ((num + offset) * row_delta), column + ((num + offset) * column_delta)] }
+      #get the tokens from given locations in array form
+      tokens = get_tokens_from_given_locations(possible_win_locations, board)
+      #return true if tokens consist of 4 of same tokens
+      four_of_same_tokens?(tokens)
+    end
   end
 
   def get_tokens_from_given_locations(locations, board)
