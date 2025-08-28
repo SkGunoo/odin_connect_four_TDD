@@ -23,7 +23,7 @@ class Board
   end
   
   def place_token_to_column(column, shape)
-    number_of_rows = @board_row.size
+    number_of_rows = @board_row
     number_of_rows.times do |num|
       # skips iteration until token can reach 
       # the deepest it can go
