@@ -4,7 +4,7 @@ class Board
   def initialize(board_row = 4, board_column = 7)
     @board_row = board_row
     @board_column = board_column
-    @board = Array.new(4) { Array.new(7) }
+    @board = Array.new(board_row) { Array.new(board_column) }
     # @last_placec_token gets pass to winchecker class
     # and the structure of it :[row,column,shape,@board]
     @last_placed_token_data = nil
